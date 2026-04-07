@@ -1,0 +1,32 @@
+{
+  "configurations": [
+    {
+      "name": "macOS-clang-arm64",
+      "compilerPath": "/usr/bin/clang++",
+      "intelliSenseMode": "macos-clang-arm64",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+      "includePath": [
+        "${workspaceFolder}",
+        "/opt/homebrew/include",
+        "/opt/homebrew/include/opencv4",
+        "/opt/homebrew/opt/opencv/include/opencv4",
+        "/opt/homebrew/opt/eigen/include",
+        "/opt/homebrew/include/eigen3"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}",
+          "/opt/homebrew/include",
+          "/opt/homebrew/include/opencv4",
+          "/opt/homebrew/opt/opencv/include/opencv4",
+          "/opt/homebrew/opt/eigen/include",
+          "/opt/homebrew/include/eigen3"
+        ],
+        "limitSymbolsToIncludedHeaders": true
+      }
+    }
+  ],
+  "version": 4
+}

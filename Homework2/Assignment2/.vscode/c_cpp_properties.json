@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/homebrew/include",
+                "/opt/homebrew/Cellar/opencv/4.13.0_7/include/opencv4",
+                "/opt/homebrew/Cellar/eigen/5.0.1/include/eigen3"
+            ],
+            "compilerPath": "/usr/bin/c++",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "macos-clang-arm64"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(brew list:*)",
+      "Read(//usr/local/**)",
+      "Read(//usr/**)",
+      "Bash(mkdir -p build)",
+      "Bash(cmake ..)",
+      "Bash(make)",
+      "Bash(clang-format --version)",
+      "Bash(brew install:*)"
+    ]
+  }
+}
