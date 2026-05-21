@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework5/Assignment5",
+      "program": "/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework5/Assignment5/build/Debug/outDebug"
+    }
+  ]
+}

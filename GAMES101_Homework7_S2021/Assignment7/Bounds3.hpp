@@ -93,10 +93,19 @@ class Bounds3
 inline bool Bounds3::IntersectP(const Ray& ray, const Vector3f& invDir,
                                 const std::array<int, 3>& dirIsNeg) const
 {
-    // invDir: ray direction(x,y,z), invDir=(1.0/x,1.0/y,1.0/z), use this because Multiply is faster that Division
-    // dirIsNeg: ray direction(x,y,z), dirIsNeg=[int(x>0),int(y>0),int(z>0)], use this to simplify your logic
-    // TODO test if ray bound intersects
+    float tMinX = ((*this)[dirIsNeg[0]].x - ray.origin.x) * invDir.x;
+    float tMaxX = ((*this)[1 - dirIsNeg[0]].x - ray.origin.x) * invDir.x;
 
+    float tMinY = ((*this)[dirIsNeg[1]].y - ray.origin.y) * invDir.y;
+    float tMaxY = ((*this)[1 - dirIsNeg[1]].y - ray.origin.y) * invDir.y;
+
+    float tMinZ = ((*this)[dirIsNeg[2]].z - ray.origin.z) * invDir.z;
+    float tMaxZ = ((*this)[1 - dirIsNeg[2]].z - ray.origin.z) * invDir.z;
+
+    float t_enter = std::max(tMinX, std::max(tMinY, tMinZ));
+    float t_exit = std::min(tMaxX, std::min(tMaxY, tMaxZ));
+
+    return t_enter <= t_exit && t_exit >= 0;
 }
 
 inline Bounds3 Union(const Bounds3& b1, const Bounds3& b2)

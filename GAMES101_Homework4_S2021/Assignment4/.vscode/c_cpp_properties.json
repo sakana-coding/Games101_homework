@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/homebrew/opt/opencv/include/opencv4"
+            ],
+            "compileCommands": "${workspaceFolder}/compile_commands.json",
+            "cppStandard": "c++14"
+        }
+    ],
+    "version": 4
+}

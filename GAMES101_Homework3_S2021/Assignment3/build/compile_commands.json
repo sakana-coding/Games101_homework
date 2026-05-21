@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/build",
+  "command": "/usr/bin/c++  -I/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3 -I/opt/homebrew/include -isystem /opt/homebrew/Cellar/opencv/4.13.0_7/include/opencv4 -std=gnu++17 -arch arm64 -o CMakeFiles/Rasterizer.dir/main.cpp.o -c /Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/main.cpp",
+  "file": "/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/main.cpp",
+  "output": "CMakeFiles/Rasterizer.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/build",
+  "command": "/usr/bin/c++  -I/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3 -I/opt/homebrew/include -isystem /opt/homebrew/Cellar/opencv/4.13.0_7/include/opencv4 -std=gnu++17 -arch arm64 -o CMakeFiles/Rasterizer.dir/rasterizer.cpp.o -c /Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/rasterizer.cpp",
+  "file": "/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/rasterizer.cpp",
+  "output": "CMakeFiles/Rasterizer.dir/rasterizer.cpp.o"
+},
+{
+  "directory": "/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/build",
+  "command": "/usr/bin/c++  -I/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3 -I/opt/homebrew/include -isystem /opt/homebrew/Cellar/opencv/4.13.0_7/include/opencv4 -std=gnu++17 -arch arm64 -o CMakeFiles/Rasterizer.dir/Triangle.cpp.o -c /Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/Triangle.cpp",
+  "file": "/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/Triangle.cpp",
+  "output": "CMakeFiles/Rasterizer.dir/Triangle.cpp.o"
+},
+{
+  "directory": "/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/build",
+  "command": "/usr/bin/c++  -I/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3 -I/opt/homebrew/include -isystem /opt/homebrew/Cellar/opencv/4.13.0_7/include/opencv4 -std=gnu++17 -arch arm64 -o CMakeFiles/Rasterizer.dir/Texture.cpp.o -c /Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/Texture.cpp",
+  "file": "/Users/xuxiang/Documents/GAMES101/GAMES101_Homework_S2021/Homework3/Assignment3/Texture.cpp",
+  "output": "CMakeFiles/Rasterizer.dir/Texture.cpp.o"
+}
+]

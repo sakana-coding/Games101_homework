@@ -7,4 +7,5 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(BezierCurve main.cpp)
 
+target_include_directories(BezierCurve PRIVATE ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(BezierCurve ${OpenCV_LIBRARIES})

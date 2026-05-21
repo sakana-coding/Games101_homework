@@ -2,7 +2,11 @@
 // Created by goksu on 2/25/20.
 //
 
+#include <algorithm>
+#include <atomic>
 #include <fstream>
+#include <mutex>
+#include <thread>
 #include "Scene.hpp"
 #include "Renderer.hpp"
 
@@ -21,25 +25,54 @@ void Renderer::Render(const Scene& scene)
     float scale = tan(deg2rad(scene.fov * 0.5));
     float imageAspectRatio = scene.width / (float)scene.height;
     Vector3f eye_pos(278, 273, -800);
-    int m = 0;
-
     // change the spp value to change sample ammount
     int spp = 16;
     std::cout << "SPP: " << spp << "\n";
-    for (uint32_t j = 0; j < scene.height; ++j) {
-        for (uint32_t i = 0; i < scene.width; ++i) {
-            // generate primary ray direction
-            float x = (2 * (i + 0.5) / (float)scene.width - 1) *
-                      imageAspectRatio * scale;
-            float y = (1 - 2 * (j + 0.5) / (float)scene.height) * scale;
+    unsigned int thread_count = std::thread::hardware_concurrency();
+    if (thread_count == 0)
+        thread_count = 4;
+    thread_count = std::min(thread_count, static_cast<unsigned int>(scene.height));
+    std::cout << "Threads: " << thread_count << "\n";
 
-            Vector3f dir = normalize(Vector3f(-x, y, 1));
-            for (int k = 0; k < spp; k++){
-                framebuffer[m] += scene.castRay(Ray(eye_pos, dir), 0) / spp;  
+    std::atomic<int> next_row(0);
+    std::atomic<int> finished_rows(0);
+    std::mutex progress_mutex;
+    std::vector<std::thread> workers;
+    workers.reserve(thread_count);
+
+    auto render_worker = [&]() {
+        while (true) {
+            int j = next_row.fetch_add(1);
+            if (j >= scene.height)
+                break;
+
+            for (int i = 0; i < scene.width; ++i) {
+                // generate primary ray direction
+                float x = (2 * (i + 0.5f) / (float)scene.width - 1) *
+                          imageAspectRatio * scale;
+                float y = (1 - 2 * (j + 0.5f) / (float)scene.height) * scale;
+
+                Vector3f dir = normalize(Vector3f(-x, y, 1));
+                int index = j * scene.width + i;
+                for (int k = 0; k < spp; k++) {
+                    framebuffer[index] += scene.castRay(Ray(eye_pos, dir), 0) / spp;
+                }
             }
-            m++;
+
+            int done = finished_rows.fetch_add(1) + 1;
+            {
+                std::lock_guard<std::mutex> lock(progress_mutex);
+                UpdateProgress(done / (float)scene.height);
+            }
         }
-        UpdateProgress(j / (float)scene.height);
+    };
+
+    for (unsigned int t = 0; t < thread_count; ++t) {
+        workers.emplace_back(render_worker);
+    }
+
+    for (auto& worker : workers) {
+        worker.join();
     }
     UpdateProgress(1.f);
 
